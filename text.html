@@ -1,0 +1,38 @@
+<html>
+    <body>
+        <textarea id="myTextArea" rows="4" cols="40">      
+        </textarea>
+        <button id="showTextButton">Show Text</button>
+        <button id="addTextButton">Add Text</button>
+        <button id="saveNotesButton">Save Notes</button>
+    </body>
+    <script>
+        textarea = document.getElementById("myTextArea");
+        addTextButton = document.getElementById("addTextButton");
+        addTextButton.addEventListener("click", function()
+        {
+            textarea.value += "... some more text ..."
+        });
+        showTextButton = document.getElementById("showTextButton");
+        showTextButton.addEventListener("click", function()
+        {
+            console.log(textarea.value)
+            console.log("hi");
+        });
+        saveNotesButton = document.getElementById("saveNotesButton");
+        saveNotesButton.addEventListener("click", function()
+        {
+            notes = textarea.value;
+            localStorage.setItem("notes",notes);
+            alert("Your notes have been stored");
+        });
+        window.addEventListener("load", function()
+        {
+            storedNotes = localStorage.getItem("notes");
+            if (storedNotes)
+            {
+                textarea.value = storedNotes;
+            }
+        });
+    </script>
+</html>
